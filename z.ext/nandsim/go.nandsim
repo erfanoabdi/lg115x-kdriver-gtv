@@ -1,0 +1,11 @@
+echo "Loading nandsimulator (ST Micro NAND 512MB 1,8V 8-bit)..."
+
+if [ x$DISK_DIR == x ] ; then
+	DISK_DIR=/opt
+fi
+if [ x$HOME_DIR == x ] ; then
+	HOME_DIR=/opt
+fi
+
+insmod nandsim.ko first_id_byte=0x20 second_id_byte=0xac third_id_byte=0x00 fourth_id_byte=0x15 cache_file=$DISK_DIR/nandflash.img map_file=$HOME_DIR/MTD.INFO page_file=$DISK_DIR/nandflash.idx
+
